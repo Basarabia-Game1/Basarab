@@ -341,6 +341,7 @@ GameObject:
   - component: {fileID: 1961484886}
   - component: {fileID: 1961484885}
   - component: {fileID: 1961484884}
+  - component: {fileID: 1961484887}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -414,6 +415,39 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1961484887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1961484883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
 --- !u!1 &2040576256
 GameObject:
   m_ObjectHideFlags: 0
@@ -819,6 +853,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1544533239}
     m_Modifications:
+    - target: {fileID: 1042536943930037622, guid: 4f7a5a2cd84743847a9358057f6d2abd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1322650330720893282, guid: 4f7a5a2cd84743847a9358057f6d2abd, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -866,6 +904,10 @@ PrefabInstance:
     - target: {fileID: 1806277544507057112, guid: 4f7a5a2cd84743847a9358057f6d2abd, type: 3}
       propertyPath: m_Name
       value: Woman_02 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2109415594056612237, guid: 4f7a5a2cd84743847a9358057f6d2abd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f7a5a2cd84743847a9358057f6d2abd, type: 3}
@@ -1229,6 +1271,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5297243719263005442, guid: 13c865fcad4f7d54ebf3bfe5f8542844, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5608281766795506007, guid: 13c865fcad4f7d54ebf3bfe5f8542844, type: 3}
       propertyPath: m_Name
       value: Woman_02
@@ -1236,6 +1282,10 @@ PrefabInstance:
     - target: {fileID: 5608281766795506007, guid: 13c865fcad4f7d54ebf3bfe5f8542844, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6535396533541865465, guid: 13c865fcad4f7d54ebf3bfe5f8542844, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13c865fcad4f7d54ebf3bfe5f8542844, type: 3}
@@ -1784,6 +1834,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1544533239}
     m_Modifications:
+    - target: {fileID: 6969596087043869538, guid: edddb7d742055024392fea7d8b6eba10, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7273299258185453879, guid: edddb7d742055024392fea7d8b6eba10, type: 3}
       propertyPath: m_Name
       value: Woman_02 (1)
@@ -1830,6 +1884,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8044593933087525773, guid: edddb7d742055024392fea7d8b6eba10, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8325195467456636825, guid: edddb7d742055024392fea7d8b6eba10, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1890,9 +1948,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3033286616994294384, guid: 93bf000035a6ac04a9a2ebfa81544644, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3337008506100674597, guid: 93bf000035a6ac04a9a2ebfa81544644, type: 3}
       propertyPath: m_Name
       value: Woman_02 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4118987739727529611, guid: 93bf000035a6ac04a9a2ebfa81544644, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93bf000035a6ac04a9a2ebfa81544644, type: 3}
