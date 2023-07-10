@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Scythe
+  m_Name: Sword
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_ValidKeywords:
   - _EMISSION
@@ -25,11 +25,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: a2d2fede2634cbd4f98737ab6a76db39, type: 3}
+        m_Texture: {fileID: 2800000, guid: cc611062b161dc94fbf2f5ae124c50f7, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: de0ccd41ea02ce544b7e9896c98f4782, type: 3}
+        m_Texture: {fileID: 2800000, guid: 7cd78c5b133843241ac79583eec5a1b3, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -45,15 +45,15 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
-        m_Texture: {fileID: 2800000, guid: 7ec1b59e223ae8b42928d2a96c67f8f5, type: 3}
+        m_Texture: {fileID: 2800000, guid: 3ee1d5223d1e573469be6b587e8ab08b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: a2d2fede2634cbd4f98737ab6a76db39, type: 3}
+        m_Texture: {fileID: 2800000, guid: cc611062b161dc94fbf2f5ae124c50f7, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: d7359cb798d3f8e4187a4dbca1dcb006, type: 3}
+        m_Texture: {fileID: 2800000, guid: 110b6c6acc2a39f4fb585da5c423d9b8, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -114,7 +114,7 @@ Material:
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
---- !u!114 &3129973965376805279
+--- !u!114 &3707909972435085481
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
