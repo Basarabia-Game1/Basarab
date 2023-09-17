@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/PolygonSciFiWorlds/Scenes/Menu.unity
-    guid: 0222281155eb84e46976c44322b19a28
+    path: Assets/TestMenu/TestMenu.unity
+    guid: 6dff342088ad1b745b2b198dee6ac2c9
+  - enabled: 1
+    path: Assets/TestMenu/TestDemo.unity
+    guid: b2457fbc038d65644b4e5604229dbc31
   m_configObjects: {}
