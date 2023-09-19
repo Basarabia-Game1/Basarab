@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4242196495438142}
   - component: {fileID: 33077923217408654}
   - component: {fileID: 23497006291694590}
-  - component: {fileID: 64675361036109280}
+  - component: {fileID: 702482007}
   m_Layer: 0
   m_Name: SM_Env_Plant_Palm_01
   m_TagString: Untagged
@@ -84,8 +84,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &64675361036109280
-MeshCollider:
+--- !u!65 &702482007
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -94,7 +94,6 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43089177427195392, guid: a063c05e81af2754db177a2fd7687d82, type: 2}
+  serializedVersion: 2
+  m_Size: {x: 1.8144875, y: 6.6316285, z: 1.8966031}
+  m_Center: {x: 0.11630416, y: 3.0445697, z: 0.06464994}
