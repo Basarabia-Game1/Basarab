@@ -3,7 +3,22 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Destroyable
+  - Enemy
+  - Usable
+  - EndLevel
+  - SurvCamera
+  - Alarm
+  - EnvZone
+  - Pickup
+  - Noise
+  - Bullets
+  - Canvas
+  - AIPlayer
+  - AINeutral
+  - Vehicles
+  - Game
   layers:
   - Default
   - TransparentFX
@@ -13,20 +28,20 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Objects
+  - Character
+  - DeadCharacter
+  - Dynamic
+  - Triggers
+  - Bullets
+  - PlayerCharacter
+  - CameraWall
+  - Blood
+  - Weapon
+  - Vehicles
+  - Camera
+  - Items
+  - Minimap
   - 
   - 
   - 
