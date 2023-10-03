@@ -3,9 +3,10 @@ using System.Collections;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using Photon.Pun;
 
-
-public class PrGameSetup : MonoBehaviour {
+public class PrGameSetup : MonoBehaviourPunCallbacks
+{
 
     public enum GameMode
     {
@@ -52,7 +53,7 @@ public class PrGameSetup : MonoBehaviour {
     private bool useLives = false;
     private int[] livesPerPlayer;
     private bool[] playerReachedEndZone;
-    
+
     [Header("SinglePlayer and coop Setup")]
 
     public GameObject LevelCompleteUI;
@@ -102,7 +103,7 @@ public class PrGameSetup : MonoBehaviour {
     private float waveSpawnTimer = 0.0f;
     private float timeBetweenSpawn = 0.0f;
 
-    
+
     [Header("Camera Setup")]
     private bool useSplitScreen = false;
     public bool useSingleScreenCameraLimits = false;
@@ -113,7 +114,7 @@ public class PrGameSetup : MonoBehaviour {
     public PrTopDownMutiplayerCam actualCameraScript;
 
     [Header("Debug")]
-    
+
     public Mesh areaMesh;
     public Mesh targetArrow;
 
@@ -144,7 +145,8 @@ public class PrGameSetup : MonoBehaviour {
 
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
 
         this.tag = "Game";
 
@@ -184,7 +186,7 @@ public class PrGameSetup : MonoBehaviour {
                 pS += 1;
             }
         }
-        
+
 
         actualPlayerPrefabs = new GameObject[4];
         spawnPointFull = new bool[playersSpawnPos.Length];
@@ -234,7 +236,7 @@ public class PrGameSetup : MonoBehaviour {
         StartGame();
 
     }
-	
+
     void initializeEndzones()
     {
         //EndZone Initialization
@@ -252,7 +254,7 @@ public class PrGameSetup : MonoBehaviour {
         playersDeathPos = new Vector3[4];
         useLives = playerSettings.useLives;
         livesPerPlayer = new int[4];
-       
+
         for (int x = 0; x < 4; x++)
         {
             playersDeathPos[x] = playersSpawnPos[x].position;
@@ -265,11 +267,12 @@ public class PrGameSetup : MonoBehaviour {
                 livesPerPlayer[x] = 99999;
             }
         }
-        
+
     }
 
     // Update is called once per frame
-	void Update () {
+    void Update()
+    {
 
         if (mode == GameMode.DeathMatch || mode == GameMode.TeamDeathMatch)
         {
@@ -334,7 +337,7 @@ public class PrGameSetup : MonoBehaviour {
                     LevelDone();
                 }
             }
-           
+
         }
 
         if (mode == GameMode.DeathMatch || mode == GameMode.TeamDeathMatch)
@@ -349,7 +352,7 @@ public class PrGameSetup : MonoBehaviour {
                 {
                     RespawnPlayer(0);
                 }
-                    
+
             }
 
             if (Input.GetButtonDown("Player2Start") && playersSettings.playersInGame[1])
@@ -387,7 +390,7 @@ public class PrGameSetup : MonoBehaviour {
                 }
             }
         }
-        
+
         if (spawnPointFull.Length > 0 && playersSpawnPos.Length > 0)
         {
             for (int i = 0; i < spawnPointFull.Length; i++)
@@ -447,7 +450,7 @@ public class PrGameSetup : MonoBehaviour {
         {
             if (actualPlayerPrefabs[i] != null)
                 DestroyPlayer(i);
-            
+
             if (playersInventorys[i] != null)
                 playersInventorys[i].character.DestroyHUD();
 
@@ -458,7 +461,7 @@ public class PrGameSetup : MonoBehaviour {
             actualPlayerCount = 4;
 
         StartGame();
-        
+
     }
     /*
     void HideSpawnPoints()
@@ -522,7 +525,7 @@ public class PrGameSetup : MonoBehaviour {
                 }
             }
         }
-        
+
     }
 
     void SetLevelComplete()
@@ -560,7 +563,7 @@ public class PrGameSetup : MonoBehaviour {
 
     void LevelDone()
     {
-        
+
         //Debug.Log("Level Complete - Loading Next Level");
 
         if (mode == GameMode.SinglePlayer)
@@ -573,7 +576,7 @@ public class PrGameSetup : MonoBehaviour {
         }
 
         LoadNextLevel();
-                    
+
     }
 
     void LoadNextLevel()
@@ -626,10 +629,10 @@ public class PrGameSetup : MonoBehaviour {
 
         if (playersPrefabs.Length >= actualPlayerCount && playersSpawnPos.Length >= actualPlayerCount)
         {
-           /* for (int x = 0; x < actualPlayerCount; x++)
-            {
-                SpawnPlayer(x, false);
-            }*/
+            /* for (int x = 0; x < actualPlayerCount; x++)
+             {
+                 SpawnPlayer(x, false);
+             }*/
             for (int x = 0; x < 4; x++)
             {
                 if (playersSettings.playersInGame[x])
@@ -648,7 +651,7 @@ public class PrGameSetup : MonoBehaviour {
         }
 
         //HUD Reset
-        if (mode == GameMode.DeathMatch || mode == GameMode.TeamDeathMatch )
+        if (mode == GameMode.DeathMatch || mode == GameMode.TeamDeathMatch)
         {
             ResetFragHUD();
             UpdateFragHUD();
@@ -696,13 +699,13 @@ public class PrGameSetup : MonoBehaviour {
                     pL += 1;
                 }
             }
-                
+
             if (actualGameOverUI)
             {
-               // //Debug.Log("Turning Off GameOver UI");
+                // //Debug.Log("Turning Off GameOver UI");
                 actualGameOverUI.SetActive(false);
             }
-            
+
         }
     }
 
@@ -737,17 +740,17 @@ public class PrGameSetup : MonoBehaviour {
                 spawner.SpawnerEnabled = false;
                 spawner.SpawnStartDelay = 0.0f;
             }
-                
+
         }
 
     }
 
-   /* void UpdateSurvivalTimer()
-    {
-        minString = Mathf.Floor(survivalTimer / 60).ToString("00");
-        secString = Mathf.Floor(survivalTimer % 60).ToString("00");
-    
-    }*/
+    /* void UpdateSurvivalTimer()
+     {
+         minString = Mathf.Floor(survivalTimer / 60).ToString("00");
+         secString = Mathf.Floor(survivalTimer % 60).ToString("00");
+
+     }*/
 
     void UpdateSurvivalGame()
     {
@@ -829,7 +832,7 @@ public class PrGameSetup : MonoBehaviour {
                 InterWaveSetup();
             }
         }
-       
+
     }
 
     void SetSurvivalWave()
@@ -920,8 +923,8 @@ public class PrGameSetup : MonoBehaviour {
                 }
             }
         }
-        
-        
+
+
     }
 
     void CreateCamera()
@@ -947,7 +950,7 @@ public class PrGameSetup : MonoBehaviour {
             actualCameraScript.targetHeightDistanceFactor = targetHeightDistanceFactor;
             actualCameraScript.targetHeightCorrection = targetHeightCorrection;
             actualCameraScript.useCameraColisions = useSingleScreenCameraLimits;
-            
+
             // Minimap
             actualCameraScript.minimap = playerSettings.minimap;
             actualCameraScript.minimapZoom = playerSettings.minimapZoom;
@@ -957,7 +960,7 @@ public class PrGameSetup : MonoBehaviour {
                 actualCameraScript.CreateMinimap();
                 for (int i = 0; i < playerCharacters.Length; i++)
                 {
-                    if (playerCharacters[i]) 
+                    if (playerCharacters[i])
                         playerCharacters[i].SetUpMinimapIcons(playerSettings.playerIconScale, playerSettings.playerColor[i]);
                 }
             }
@@ -970,7 +973,7 @@ public class PrGameSetup : MonoBehaviour {
         int a = 0;
         Vector3 cameraCenter = Vector3.zero;
         //if (actualPlayerCount == 1)
-       // {
+        // {
         foreach (bool x in playersSettings.playersInGame)
         {
             if (x)
@@ -979,31 +982,31 @@ public class PrGameSetup : MonoBehaviour {
             }
             a += 1;
         }
-            
-       /* }
-        else if (actualPlayerCount == 2)
-        {
-            // cameraCenter = (actualPlayerPrefabs[0].transform.position + actualPlayerPrefabs[1].transform.position) / actualPlayerCount;
-            foreach (bool x in playersSettings.playersInGame)
-            {
-                if (x)
-                {
-                    cameraCenter = actualPlayerPrefabs[a].transform.position;
-                }
-                a += 1;
-            }
-            
-        }
-        else if (actualPlayerCount == 3)
-        {
-            cameraCenter = (actualPlayerPrefabs[0].transform.position + actualPlayerPrefabs[1].transform.position + actualPlayerPrefabs[2].transform.position) / actualPlayerCount;
-        }
-        else if (actualPlayerCount == 4)
-        {
-            cameraCenter = (actualPlayerPrefabs[0].transform.position + actualPlayerPrefabs[1].transform.position + actualPlayerPrefabs[2].transform.position + actualPlayerPrefabs[3].transform.position) / actualPlayerCount;
-        }*/
-    
-        return cameraCenter / actualPlayerCount; 
+
+        /* }
+         else if (actualPlayerCount == 2)
+         {
+             // cameraCenter = (actualPlayerPrefabs[0].transform.position + actualPlayerPrefabs[1].transform.position) / actualPlayerCount;
+             foreach (bool x in playersSettings.playersInGame)
+             {
+                 if (x)
+                 {
+                     cameraCenter = actualPlayerPrefabs[a].transform.position;
+                 }
+                 a += 1;
+             }
+
+         }
+         else if (actualPlayerCount == 3)
+         {
+             cameraCenter = (actualPlayerPrefabs[0].transform.position + actualPlayerPrefabs[1].transform.position + actualPlayerPrefabs[2].transform.position) / actualPlayerCount;
+         }
+         else if (actualPlayerCount == 4)
+         {
+             cameraCenter = (actualPlayerPrefabs[0].transform.position + actualPlayerPrefabs[1].transform.position + actualPlayerPrefabs[2].transform.position + actualPlayerPrefabs[3].transform.position) / actualPlayerCount;
+         }*/
+
+        return cameraCenter / actualPlayerCount;
     }
 
     void DestroyPlayer(int playerNumber)
@@ -1014,10 +1017,10 @@ public class PrGameSetup : MonoBehaviour {
     int RandomNum(int lastRandNum)
     {
         int randNum = Random.Range(0, playersSpawnPos.Length);
-        
+
         return randNum;
     }
-    
+
     void SpawnPlayer(int playerNumber, bool randomPos)
     {
         if (playersSettings.playersInGame[playerNumber])
@@ -1039,14 +1042,17 @@ public class PrGameSetup : MonoBehaviour {
             Vector3 finalSpawnPos = playersSpawnPos[posInt].position;
             if (useLives && playersDeathPos[playerNumber] != playersSpawnPos[playerNumber].position)
             {
-            //    //Debug.Log("aaaa" + playersDeathPos[playerNumber]);
+                //    //Debug.Log("aaaa" + playersDeathPos[playerNumber]);
                 finalSpawnPos = playersDeathPos[playerNumber];
             }
 
             ////Debug.Log(finalSpawnPos);
             //Instantiate player Prefab in Scene
-            
-            GameObject tempPlayer = PrUtils.InstantiateActor(playersPrefabs[playerNumber], finalSpawnPos, playersSpawnPos[posInt].rotation, "Player_" + playerNumber, this.transform);
+            GameObject tempPlayer;
+            if (PhotonNetwork.InRoom)
+                tempPlayer = PhotonNetwork.Instantiate(playersPrefabs[playerNumber].name, finalSpawnPos, playersSpawnPos[posInt].rotation);
+            else
+                tempPlayer = PrUtils.InstantiateActor(playersPrefabs[playerNumber], finalSpawnPos, playersSpawnPos[posInt].rotation, "Player_" + playerNumber, this.transform);
             //GameObject tempPlayer = Instantiate(playersPrefabs[playerNumber], finalSpawnPos, playersSpawnPos[posInt].rotation) as GameObject;
             //tempPlayer.transform.parent = this.transform;
             actualPlayerPrefabs[playerNumber] = tempPlayer;
@@ -1075,7 +1081,7 @@ public class PrGameSetup : MonoBehaviour {
             {
                 playerCharacters[playerNumber].team = playerNumber;
                 playersControllers[playerNumber].JoystickEnabled = true;
-               
+
             }
             else if (mode == GameMode.TeamDeathMatch)
             {
@@ -1113,7 +1119,7 @@ public class PrGameSetup : MonoBehaviour {
 
             if (mode != GameMode.SinglePlayer)
             {
-                
+
                 if (useSplitScreen)
                 {
                     ////Debug.Log("Split Screen Active");
@@ -1161,7 +1167,7 @@ public class PrGameSetup : MonoBehaviour {
 
                         }
                     }
-                        
+
                     //SetCamSplitScreen()
                     // playersControllers[playerNumber].CamScript.transform.GetComponentInChildren<Camera>().rect.
                 }
@@ -1176,8 +1182,8 @@ public class PrGameSetup : MonoBehaviour {
                 }
             }
         }
-        
-        
+
+
 
     }
 
@@ -1188,17 +1194,17 @@ public class PrGameSetup : MonoBehaviour {
 
     void ResetFragHUD()
     {
-        
+
         int i = 1;
 
         foreach (GameObject text in fragCounter)
         {
-            if (playersSettings.playersInGame[i-1])
+            if (playersSettings.playersInGame[i - 1])
             {
                 playersFrags[i - 1] = 0;
                 text.GetComponent<Text>().text = "P" + i.ToString() + " " + playersFrags[i - 1].ToString();
             }
-           
+
         }
 
         i = 1;
@@ -1211,7 +1217,7 @@ public class PrGameSetup : MonoBehaviour {
                 text.GetComponent<Text>().text = teamFrags[i - 1].ToString();
             }
         }
-        
+
     }
 
     void OrganizeFragHUD()
@@ -1230,7 +1236,7 @@ public class PrGameSetup : MonoBehaviour {
                 }
                 else
                 {
-                    if (playersSettings.playersInGame[i-1])
+                    if (playersSettings.playersInGame[i - 1])
                     {
                         text.GetComponent<Text>().color = playerSettings.playerColor[i - 1];
                         text.GetComponent<Text>().text = "P" + i.ToString() + " " + playersFrags[i - 1].ToString() + "0";
@@ -1239,7 +1245,7 @@ public class PrGameSetup : MonoBehaviour {
                     {
                         text.GetComponent<Text>().text = "";
                     }
-                    
+
                 }
 
                 i += 1;
@@ -1249,7 +1255,7 @@ public class PrGameSetup : MonoBehaviour {
         {
             fragCounter[0].transform.parent.gameObject.SetActive(false);
             teamfragCounter[0].transform.parent.gameObject.SetActive(true);
-            
+
         }
 
 
@@ -1283,7 +1289,7 @@ public class PrGameSetup : MonoBehaviour {
     {
         if (stage == GameStage.inGame)
         {
-            if (mode == GameMode.DeathMatch )
+            if (mode == GameMode.DeathMatch)
             {
                 if (team < 0)
                 {
@@ -1380,7 +1386,7 @@ public class PrGameSetup : MonoBehaviour {
             }
             if (useLives == true)
             {
-                if ( livesPerPlayer[playerNumber - 1] > 1)
+                if (livesPerPlayer[playerNumber - 1] > 1)
                 {
                     livesPerPlayer[playerNumber - 1] -= 1;
                     coopPlayerStates[playerNumber - 1] = "Respawning";
@@ -1417,7 +1423,7 @@ public class PrGameSetup : MonoBehaviour {
 
     public void GameOver()
     {
-        if (mode == GameMode.Survival )
+        if (mode == GameMode.Survival)
             stage = GameStage.EndedMatch;
 
         if (mode == GameMode.SinglePlayer || mode == GameMode.Coop)
@@ -1432,7 +1438,7 @@ public class PrGameSetup : MonoBehaviour {
         {
             actualGameOverUI = Instantiate(GameOverUI, Vector3.zero, Quaternion.identity);
         }
-        
+
         for (int i = 0; i == 3; i++)
         {
             livesPerPlayer[i] = livesPerPlayer[i] - 1;
@@ -1452,17 +1458,17 @@ public class PrGameSetup : MonoBehaviour {
                 ////Debug.Log("Actual Objective " + objectivesManager.actualObjective);
                 //PrPlayerInfo.player1.lastPlayerPosition = p.transform.position;
                 if (objectivesManager)
-                    PrPlayerInfo.player1.lastObjectiveActive = objectivesManager.actualObjective - 1 ;
-               /* if (useLives)
-                {
-                    //Debug.Log("USE LIVES " + PrPlayerInfo.player1.lives[0]);
-                    /*for (int i = 0; i == 3; i++)
-                    {
-                        PrPlayerInfo.player1.lives[i] -= 1;
-                        
-                        //PrPlayerInfo.player1.lives[i] = livesPerPlayer[i] -= 1;
-                    }
-                }*/
+                    PrPlayerInfo.player1.lastObjectiveActive = objectivesManager.actualObjective - 1;
+                /* if (useLives)
+                 {
+                     //Debug.Log("USE LIVES " + PrPlayerInfo.player1.lives[0]);
+                     /*for (int i = 0; i == 3; i++)
+                     {
+                         PrPlayerInfo.player1.lives[i] -= 1;
+
+                         //PrPlayerInfo.player1.lives[i] = livesPerPlayer[i] -= 1;
+                     }
+                 }*/
                 p.StopMoving("GameOver");
             }
             x++;
@@ -1489,7 +1495,7 @@ public class PrGameSetup : MonoBehaviour {
         {
             finalText = "BLUE TEAM WINS";
         }
-        
+
         playerWinsText.GetComponent<Text>().text = finalText;
     }
 
@@ -1523,7 +1529,7 @@ public class PrGameSetup : MonoBehaviour {
                     // Gizmos.color = Color.white;
                     Gizmos.DrawMesh(areaMesh, spawnPos.position, Quaternion.Euler(0, 0, 0), Vector3.one);
                 }
-               
+
 
             }
         }

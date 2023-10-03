@@ -1,8 +1,9 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PrActor : MonoBehaviour
+public class PrActor : MonoBehaviourPunCallbacks
 {
     public enum CHT
     {
@@ -186,8 +187,12 @@ public class PrActor : MonoBehaviour
             selectedPrefab = Random.Range(0, actorPrefab.Length);
         }
 
-        actualActorPrefab = PrUtils.InstantiateActor(actorPrefab[selectedPrefab], transform.position, transform.rotation, Name, transform);
-        actualActorPrefab.transform.localScale *= Mathf.Clamp((scale + Random.Range(-scaleRandomVariation, scaleRandomVariation)),0.01f, (scale + Random.Range(-scaleRandomVariation, scaleRandomVariation)));
+        //if (PhotonNetwork.InRoom)
+        //    actualActorPrefab = PhotonNetwork.Instantiate(actorPrefab[selectedPrefab].name, transform.position, transform.rotation);
+        //else
+            actualActorPrefab = PrUtils.InstantiateActor(actorPrefab[selectedPrefab], transform.position, transform.rotation, Name, transform);
+       
+        actualActorPrefab.transform.localScale *= Mathf.Clamp((scale + Random.Range(-scaleRandomVariation, scaleRandomVariation)), 0.01f, (scale + Random.Range(-scaleRandomVariation, scaleRandomVariation)));
 
         if (type == CHT.player)
         {
@@ -282,7 +287,7 @@ public class PrActor : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -365,10 +370,10 @@ public class PrActor : MonoBehaviour
         {
             ActualStaminaRecover += Time.deltaTime;
         }
-        
+
         if (actualHUD)
             actualHUD.HUDStaminaBar.GetComponent<RectTransform>().localScale = new Vector3((1.0f / Stamina) * ActualStamina, 1.0f, 1.0f);
-        
+
     }
 
     void NoiseUpdate()
@@ -536,7 +541,7 @@ public class PrActor : MonoBehaviour
                 actualHUD.SetHealthBar(0.0f, Health);
             }
         }
-       
+
         ////Debug.Log(ActualHealth + " 1");
     }
 

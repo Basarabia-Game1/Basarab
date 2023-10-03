@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using Photon.Pun;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class PrCharacterController : MonoBehaviour
+public class PrCharacterController : MonoBehaviourPunCallbacks
 {
+    public PhotonView photonView;
     [HideInInspector]
     public GameObject controlledCharacter;
     [HideInInspector]
@@ -155,6 +157,8 @@ public class PrCharacterController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        photonView = GetComponent<PhotonView>();
+
         SetMultiplayerSettings();
 
         if (playerSettings)
@@ -198,7 +202,9 @@ public class PrCharacterController : MonoBehaviour
 
     public void InitializeController()
     {
-        
+        //if (!photonView.IsMine)
+        //    return;
+
         characterInventory = GetComponent<PrCharacterInventory>();
         character = GetComponent<PrCharacter>();
         characterHUD = character.actualHUD;
