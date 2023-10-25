@@ -6,6 +6,7 @@ using MoreMountains.Feedbacks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using MoreMountains.Tools;
+using Photon.Pun;
 
 
 namespace MoreMountains.TopDownEngine
@@ -224,7 +225,8 @@ namespace MoreMountains.TopDownEngine
 			{
 				foreach (Character playerPrefab in PlayerPrefabs)
 				{
-					Character newPlayer = Instantiate(playerPrefab, _initialSpawnPointPosition, Quaternion.identity);
+					Character newPlayer = PhotonNetwork.Instantiate(playerPrefab.gameObject.name, _initialSpawnPointPosition, Quaternion.identity).GetComponent<Character>();
+					//Character newPlayer = Instantiate(playerPrefab, _initialSpawnPointPosition, Quaternion.identity);
 					newPlayer.name = playerPrefab.name;
 					Players.Add(newPlayer);
 
